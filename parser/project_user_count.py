@@ -23,7 +23,7 @@ def gini(values):
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
 infilespec = '%s/*/contributors.json' % datadir
 outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
-outfilename = '%s/task_contributors.txt' % (outdir)
+outfilename = '%s/project_contributors.txt' % (outdir)
 
 outfile = open(outfilename, 'w')
 outfile.write('id\tnum_users\tgini\n')

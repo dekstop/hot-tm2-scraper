@@ -9,7 +9,7 @@ import os.path
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
 infilespec = '%s/*/stats.json' % datadir
 outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
-outfilename = '%s/task_activity.txt' % (outdir)
+outfilename = '%s/project_activity.txt' % (outdir)
 
 outfile = open(outfilename, 'w')
 outfile.write('id\tfirst_date\tlast_date\tdone\tvalidated\n')
