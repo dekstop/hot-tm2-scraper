@@ -11,7 +11,7 @@ import PyQt4.QtCore
 
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
 infilespec = '%s/*/tasks.json' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/merged'
+outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 tempfilename = '%s/temp_dissolved.shp' % outdir
 outlayername = 'HOT-projects'
 outfilename = '%s/%s.shp' % (outdir, outlayername)

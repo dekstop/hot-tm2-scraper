@@ -8,7 +8,7 @@ import re
 
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
 infilespec = '%s/*/index.html' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/merged'
+outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 outfilename = '%s/project_description.txt' % (outdir)
 
 title_rexp = re.compile('.*<h1>\s*(?:#\d+ - )?(.*)\s*</h1>.*', re.DOTALL)

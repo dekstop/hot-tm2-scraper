@@ -10,7 +10,7 @@ import processing
 
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
 infilespec = '%s/*/tasks.json' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/merged'
+outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 outfilename = '%s/project_stats.txt' % outdir
 
 stateFieldName = 'state'

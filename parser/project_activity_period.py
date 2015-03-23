@@ -8,7 +8,7 @@ import os.path
 
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
 infilespec = '%s/*/stats.json' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/merged'
+outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 outfilename = '%s/task_activity.txt' % (outdir)
 
 outfile = open(outfilename, 'w')

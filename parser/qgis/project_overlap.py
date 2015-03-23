@@ -5,7 +5,7 @@
 layername = 'HOT-projects'
 idfieldname = 'id'
 
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/merged'
+outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 mapoutfilename = '%s/project_overlap_map.txt' % (outdir)
 countoutfilename = '%s/project_overlap_count.txt' % (outdir)
 
