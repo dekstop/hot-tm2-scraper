@@ -11,9 +11,9 @@ import PyQt4.QtCore
 
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
 infilespec = '%s/*/tasks.json' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
+outdir = '/home/martin/osm/outputs/20150323-hot-scraper/shapefiles'
 tempfilename = '%s/temp_dissolved.shp' % outdir
-outlayername = 'HOT-projects'
+outlayername = 'hot_project_regions'
 outfilename = '%s/%s.shp' % (outdir, outlayername)
 
 fields = QgsFields()
@@ -28,6 +28,9 @@ for infilename in glob.glob(infilespec):
   
   id = os.path.basename(os.path.dirname(infilename))
   layer = qgis.utils.iface.addVectorLayer(infilename, 'tasks-%s' % id, 'ogr')
+  if layer==None:
+    print "Failed to load the layer! Check its file format."
+    continue
   
   if writer==None:
     # lazy initialisation: we adopt the existing geom type and CRS
