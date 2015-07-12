@@ -3,15 +3,24 @@
 # produces a TSV of project titles
 
 import glob
+import os
 import os.path
 import re
+import sys
 
-datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
+if len(sys.argv) != 3:
+    sys.stderr.write('Usage: <datadir> <outdir>')
+    sys.exit(1)
+
+datadir = sys.argv[1]
+outdir = sys.argv[2]
+if not os.path.isdir(outdir):
+    os.makedirs(outdir) 
+
 infilespec = '%s/*/index.html' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 outfilename = '%s/project_description.txt' % (outdir)
 
-title_rexp = re.compile('.*<h1>\s*(?:#\d+ - )?(.*)\s*</h1>.*', re.DOTALL)
+title_rexp = re.compile('.*<h1>\s*(?:#\d+ - )?(.*?)\s*(?:\(Archived\)|\(Draft\))*\s*</h1>.*', re.DOTALL)
 private_rexp = re.compile('.*403 Forbidden.*', re.DOTALL)
 archived_rexp = re.compile('.*\(Archived\).*', re.DOTALL)
 draft_rexp = re.compile('.*\(Draft\).*', re.DOTALL)

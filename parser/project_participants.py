@@ -5,11 +5,20 @@
 import codecs
 import glob
 import json
+import os
 import os.path
+import sys
 
-datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
+if len(sys.argv) != 3:
+    sys.stderr.write('Usage: <datadir> <outdir>')
+    sys.exit(1)
+
+datadir = sys.argv[1]
+outdir = sys.argv[2]
+if not os.path.isdir(outdir):
+    os.makedirs(outdir)
+
 infilespec = '%s/*/contributors.json' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 outfilename = '%s/task_contributor_map.txt' % (outdir)
 
 outfile = codecs.open(outfilename, 'w', 'utf-8')

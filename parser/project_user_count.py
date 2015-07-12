@@ -5,7 +5,9 @@
 from decimal import Decimal
 import glob
 import json
+import os
 import os.path
+import sys
 
 # Gini coefficient
 # From http://planspace.org/2013/06/21/how-to-calculate-gini-coefficient-from-raw-data-in-python/
@@ -20,9 +22,16 @@ def gini(values):
   fair_area = height * len(values) / Decimal(2)
   return (fair_area - area) / fair_area
 
-datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
+if len(sys.argv) != 3:
+    sys.stderr.write('Usage: <datadir> <outdir>')
+    sys.exit(1)
+
+datadir = sys.argv[1]
+outdir = sys.argv[2]
+if not os.path.isdir(outdir):
+    os.makedirs(outdir)
+
 infilespec = '%s/*/contributors.json' % datadir
-outdir = '/home/martin/osm/outputs/20150323-hot-scraper/profiles'
 outfilename = '%s/project_contributors.txt' % (outdir)
 
 outfile = open(outfilename, 'w')
