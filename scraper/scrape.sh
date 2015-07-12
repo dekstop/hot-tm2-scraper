@@ -1,11 +1,25 @@
 #!/bin/bash
 
-mydir=$( cd "$( dirname "$0" )" && pwd )
-datadir=${mydir}/data
+#mydir=$( cd "$( dirname "$0" )" && pwd )
+#datadir=${mydir}/data
+
 curl='curl --silent --show-error'
 agent='Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.78.2 (KHTML, like Gecko) Version/7.0.6 Safari/537.78.2'
 
-for id in `seq 1 970`
+
+if [[ $# -ne 3 ]]
+then
+  echo "Usage : $0 <outdir> <min_id> <max_id>"
+  exit 1
+fi
+
+datadir=$1
+min_id=$2
+max_id=$3
+
+mkdir -p $datadir > /dev/null 2>&1
+
+for id in `seq $min_id $max_id`
 do
   status=`$curl -I http://tasks.hotosm.org/project/${id} \
   -H 'Referer: http://tasks.hotosm.org/' \
