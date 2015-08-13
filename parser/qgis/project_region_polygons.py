@@ -8,10 +8,17 @@ from qgis.analysis import QgsGeometryAnalyzer
 import processing
 
 import PyQt4.QtCore
+# from PyQt4.QtGui import QFileDialog
 
+# dialog = QFileDialog()
+# dialog.setFileMode(QFileDialog.Directory)
+
+# datadir = dialog.getOpenFileName(None, "Input directory with */tasks.json GeoJSON files")
+# outdir = dialog.getOpenFileName(None, "Output directory for shapefile")
 datadir = '/home/martin/osm/outputs/20150323-hot-scraper/data'
-infilespec = '%s/*/tasks.json' % datadir
 outdir = '/home/martin/osm/outputs/20150323-hot-scraper/shapefiles'
+
+infilespec = '%s/*/tasks.json' % datadir
 tempfilename = '%s/temp_dissolved.shp' % outdir
 outlayername = 'hot_project_regions'
 outfilename = '%s/%s.shp' % (outdir, outlayername)
