@@ -37,21 +37,16 @@ for infilename in glob.glob(infilespec):
   
   if id!='627': # for some reason, title matching for this one doesn't terminate
     html = open(infilename).read()
-    print "title"
     match = title_rexp.search(html)
     if match:
       title = match.group(1)
-      print "newline"
       title = newline_rexp.sub(' ', title)
     
       changeset_comment = ''
-      print "changeset"
       changeset_match = changeset_rexp.search(html)
       if changeset_match:
-        print "newline"
         changeset_comment = newline_rexp.sub(' ', changeset_match.group(1))
     
-      print "flags, write"
       outfile.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (id, title,
         'true' if private_rexp.match(title) else 'false',
         'true' if archived_rexp.match(title) else 'false',
