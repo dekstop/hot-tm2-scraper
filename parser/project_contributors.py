@@ -19,7 +19,7 @@ if not os.path.isdir(outdir):
     os.makedirs(outdir)
 
 infilespec = '%s/*/contributors.json' % datadir
-outfilename = '%s/task_contributor_map.txt' % (outdir)
+outfilename = '%s/project_contributors.txt' % (outdir)
 
 outfile = codecs.open(outfilename, 'w', 'utf-8')
 outfile.write('project_id\tusername\tnum_tasks\n')
