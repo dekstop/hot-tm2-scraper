@@ -32,7 +32,7 @@ if not os.path.isdir(outdir):
     os.makedirs(outdir)
 
 infilespec = '%s/*/contributors.json' % datadir
-outfilename = '%s/project_contributors.txt' % (outdir)
+outfilename = '%s/project_user_count.txt' % (outdir)
 
 outfile = open(outfilename, 'w')
 outfile.write('id\tnum_users\tgini\n')
