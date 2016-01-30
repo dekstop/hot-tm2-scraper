@@ -20,7 +20,9 @@ if not os.path.isdir(outdir):
 infilespec = '%s/*/index.html' % datadir
 outfilename = '%s/project_description.txt' % (outdir)
 
-title_rexp = re.compile('.*<h1>\s*(?:#\d+ - )?(.*?)\s*(?:\(Archived\)|\(Draft\))*\s*</h1>.*', re.DOTALL)
+#title_rexp = re.compile('.*<h1>\s*(?:#\d+ - )?(.*?)\s*(?:\(Archived\)|\(Draft\))*\s*</h1>.*', re.DOTALL)
+title_rexp = re.compile('.*<div class="row">\s*<h1>\s*(?:#\d+ - \s*)?(.*?)\s*(?:\(Archived\)|\(Draft\))*\s*</h1>.*', re.DOTALL)
+#title_rexp = re.compile('.*<title>(?:[a-zA-Z\s]* - #\d+ - \s*)?(.*?)\s*</title>.*', re.DOTALL)
 private_rexp = re.compile('.*403 Forbidden.*', re.DOTALL)
 archived_rexp = re.compile('.*\(Archived\).*', re.DOTALL)
 draft_rexp = re.compile('.*\(Draft\).*', re.DOTALL)
