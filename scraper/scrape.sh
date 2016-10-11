@@ -23,7 +23,7 @@ for id in `seq $min_id $max_id`
 do
   status=`$curl -I http://tasks.hotosm.org/project/${id} \
   -H 'Referer: http://tasks.hotosm.org/' \
-  -H 'User-Agent: ${agent}' \
+  -H "User-Agent: ${agent}" \
   --compressed | head -n 1 | cut -d " " -f 2` || exit 1
   
   if [ "$status" -eq "404" ]
@@ -44,7 +44,7 @@ do
     echo "/project/${id}"
     $curl http://tasks.hotosm.org/project/${id} \
       -H 'Referer: http://tasks.hotosm.org/' \
-      -H 'User-Agent: ${agent}' \
+      -H "User-Agent: ${agent}" \
       --compressed > ${datadir}/${id}/index.html || exit 1
     sleep 1
     
@@ -52,8 +52,8 @@ do
     echo "/project/${id}/stats"
     $curl http://tasks.hotosm.org/project/${id}/stats \
       -H 'Accept: application/json, */*' \
-      -H 'Referer: http://tasks.hotosm.org/project/${id}' \
-      -H 'User-Agent: ${agent}' \
+      -H "Referer: http://tasks.hotosm.org/project/${id}" \
+      -H "User-Agent: ${agent}" \
       --compressed > ${datadir}/${id}/stats.json || exit 1
     sleep 1
 
@@ -61,8 +61,8 @@ do
     echo "/project/${id}/tasks.json"
     $curl http://tasks.hotosm.org/project/${id}/tasks.json \
       -H 'Accept: application/json, */*' \
-      -H 'Referer: http://tasks.hotosm.org/project/${id}' \
-      -H 'User-Agent: ${agent}' \
+      -H "Referer: http://tasks.hotosm.org/project/${id}" \
+      -H "User-Agent: ${agent}" \
       --compressed > ${datadir}/${id}/tasks.json || exit 1
     sleep 1
 
@@ -71,8 +71,8 @@ do
     $curl http://tasks.hotosm.org/project/${id}/contributors \
       -H 'Accept: application/json, text/javascript, */*; q=0.01' \
       -H 'X-Requested-With: XMLHttpRequest' \
-      -H 'Referer: http://tasks.hotosm.org/project/${id}' \
-      -H 'User-Agent: ${agent}' \
+      -H "Referer: http://tasks.hotosm.org/project/${id}" \
+      -H "User-Agent: ${agent}" \
       --compressed > ${datadir}/${id}/contributors.json || exit 1
     sleep 1
   fi
